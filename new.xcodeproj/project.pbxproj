@@ -14,6 +14,12 @@
 		5C9DD07929C6E98F00DCE3A3 /* newTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9DD07829C6E98F00DCE3A3 /* newTests.swift */; };
 		5C9DD08329C6E98F00DCE3A3 /* newUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9DD08229C6E98F00DCE3A3 /* newUITests.swift */; };
 		5C9DD08529C6E98F00DCE3A3 /* newUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9DD08429C6E98F00DCE3A3 /* newUITestsLaunchTests.swift */; };
+		5C9DD09629C6E9FF00DCE3A3 /* tableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9DD09129C6E9FF00DCE3A3 /* tableView.swift */; };
+		5C9DD09729C6E9FF00DCE3A3 /* noticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9DD09229C6E9FF00DCE3A3 /* noticeView.swift */; };
+		5C9DD09829C6E9FF00DCE3A3 /* popupUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9DD09329C6E9FF00DCE3A3 /* popupUI.swift */; };
+		5C9DD09929C6E9FF00DCE3A3 /* netWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9DD09429C6E9FF00DCE3A3 /* netWork.swift */; };
+		5C9DD09A29C6E9FF00DCE3A3 /* settingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9DD09529C6E9FF00DCE3A3 /* settingView.swift */; };
+		5C9DD09D29C6EA2400DCE3A3 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 5C9DD09C29C6EA2400DCE3A3 /* SocketIO */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +50,11 @@
 		5C9DD07E29C6E98F00DCE3A3 /* newUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = newUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C9DD08229C6E98F00DCE3A3 /* newUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newUITests.swift; sourceTree = "<group>"; };
 		5C9DD08429C6E98F00DCE3A3 /* newUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5C9DD09129C6E9FF00DCE3A3 /* tableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableView.swift; sourceTree = "<group>"; };
+		5C9DD09229C6E9FF00DCE3A3 /* noticeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = noticeView.swift; sourceTree = "<group>"; };
+		5C9DD09329C6E9FF00DCE3A3 /* popupUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = popupUI.swift; sourceTree = "<group>"; };
+		5C9DD09429C6E9FF00DCE3A3 /* netWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = netWork.swift; sourceTree = "<group>"; };
+		5C9DD09529C6E9FF00DCE3A3 /* settingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C9DD09D29C6EA2400DCE3A3 /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +108,11 @@
 			children = (
 				5C9DD06729C6E98E00DCE3A3 /* newApp.swift */,
 				5C9DD06929C6E98E00DCE3A3 /* ContentView.swift */,
+				5C9DD09429C6E9FF00DCE3A3 /* netWork.swift */,
+				5C9DD09229C6E9FF00DCE3A3 /* noticeView.swift */,
+				5C9DD09329C6E9FF00DCE3A3 /* popupUI.swift */,
+				5C9DD09529C6E9FF00DCE3A3 /* settingView.swift */,
+				5C9DD09129C6E9FF00DCE3A3 /* tableView.swift */,
 				5C9DD06B29C6E98E00DCE3A3 /* Assets.xcassets */,
 				5C9DD06D29C6E98E00DCE3A3 /* Preview Content */,
 			);
@@ -143,6 +160,9 @@
 			dependencies = (
 			);
 			name = new;
+			packageProductDependencies = (
+				5C9DD09C29C6EA2400DCE3A3 /* SocketIO */,
+			);
 			productName = new;
 			productReference = 5C9DD06429C6E98E00DCE3A3 /* new.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +235,9 @@
 				Base,
 			);
 			mainGroup = 5C9DD05B29C6E98E00DCE3A3;
+			packageReferences = (
+				5C9DD09B29C6EA2400DCE3A3 /* XCRemoteSwiftPackageReference "socket" */,
+			);
 			productRefGroup = 5C9DD06529C6E98E00DCE3A3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,8 +280,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C9DD09829C6E9FF00DCE3A3 /* popupUI.swift in Sources */,
+				5C9DD09729C6E9FF00DCE3A3 /* noticeView.swift in Sources */,
 				5C9DD06A29C6E98E00DCE3A3 /* ContentView.swift in Sources */,
 				5C9DD06829C6E98E00DCE3A3 /* newApp.swift in Sources */,
+				5C9DD09929C6E9FF00DCE3A3 /* netWork.swift in Sources */,
+				5C9DD09A29C6E9FF00DCE3A3 /* settingView.swift in Sources */,
+				5C9DD09629C6E9FF00DCE3A3 /* tableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +611,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5C9DD09B29C6EA2400DCE3A3 /* XCRemoteSwiftPackageReference "socket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 16.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5C9DD09C29C6EA2400DCE3A3 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C9DD09B29C6EA2400DCE3A3 /* XCRemoteSwiftPackageReference "socket" */;
+			productName = SocketIO;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5C9DD05C29C6E98E00DCE3A3 /* Project object */;
 }
