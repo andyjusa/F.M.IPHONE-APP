@@ -4,6 +4,8 @@ import Starscream
 import Network
 
 class netWork:ObservableObject{
+    @Published var id:Int = 2300
+    @Published var name:String = "로그인이 필요함"
     @Published var value:Data = Data([0,1,2,3,4,5,
                                       6,0,0,0,0,0,
                                       7,0,0,0,0,0,
@@ -39,6 +41,18 @@ class netWork:ObservableObject{
         {data,sid in
             self.value = ((data.first as? Data)!)
         }
+        socket.on("logined")
+        {data,sid in
+            if data[0] as! String == "suceed"{
+                self.name = data[2] as! String
+                self.id = data[1] as! Int
+                self.getSchedule(i: self.id/100)
+            }
+        }
+        socket.on("schedule")
+        {data,sid in
+            self.value = ((data.first as? Data)!)
+        }
         socket.connect()
     }
     func connect() {
@@ -52,7 +66,14 @@ class netWork:ObservableObject{
     {
         socket.emit("email", s)
     }
-        
+    func register(s:String,num:Int,name:String,psw:String)
+    {
+        socket.emit("register", [s,num,name,psw])
+    }
+    func login(name:String,psw:String)
+    {
+        socket.emit("login", [name,psw])
+    }
     func disconnect() {
         socket.disconnect()
     }

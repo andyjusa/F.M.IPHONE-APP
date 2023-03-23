@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import CryptoKit
 
 struct popupUI:View
 {
@@ -12,6 +13,7 @@ struct popupUI:View
     @State var PSWC:String = ""
     @State var Error:String = ""
     @StateObject var net:netWork
+    
     var body: some View
     {
         NavigationView
@@ -35,6 +37,8 @@ struct popupUI:View
                 Group{
                     if(isLogin){
                         inputField(imageName: "person.fill", text: "아이디", value: $ID)
+                            .textCase(.lowercase)
+                            .autocapitalization(.none)
                         HStack{
                             Image(systemName: "lock")
                             SecureField(" 비밀번호",text: $PSW)
@@ -50,12 +54,13 @@ struct popupUI:View
                                 .fontWeight(.bold)
                         }
                         .onTapGesture {
-//                            TODO: 로그인
+                            net.login(name: ID, psw: SHA256.hash(data: PSW.data(using: .utf8)!).compactMap{ String(format: "%02x",$0)}.joined())
                         }
                     }else{
                         HStack{
                             inputField(imageName: "envelope.circle.fill", text: "학교 이메일", value: $Email)
-                                .autocorrectionDisabled()
+                                .textCase(.lowercase)
+                                .autocapitalization(.none)
                             Button("인증")
                             {
                                 let emailTest = NSPredicate(format: "SELF MATCHES %@", "23ms+[0-9]{4}+@h.jne.go.kr")
@@ -69,6 +74,8 @@ struct popupUI:View
                         inputField(imageName: "number.square.fill", text: "인증번호", value: $Code)
                             .keyboardType(.decimalPad)
                         inputField(imageName: "person.fill", text: " 아이디", value: $ID)
+                            .textCase(.lowercase)
+                            .autocapitalization(.none)
                         HStack{
                             Image(systemName: "lock")
                             SecureField(" 비밀번호",text: $PSW)
@@ -80,14 +87,13 @@ struct popupUI:View
                                 .padding(.horizontal,5)
                         }
                         ZStack{
-                            
                             Rectangle().foregroundColor(.blue)
                                 .cornerRadius(10)
                                 .aspectRatio(CGSize(width: 9, height: 1),contentMode: .fit)
                             Text("\n  회원가입  \n").foregroundColor(.white)
                                 .fontWeight(.bold)
                         }.onTapGesture {
-//                            TODO: 회원가입
+                            net.register(s: Email, num: Int(Code) ?? 0, name: ID, psw: SHA256.hash(data: PSW.data(using: .utf8)!).compactMap{ String(format: "%02x",$0)}.joined())
                         }
                     }
                 }.padding([.horizontal,.bottom],20)
@@ -105,6 +111,8 @@ struct popupUI:View
         .clipShape(RoundedRectangle(cornerRadius: 40,style: .circular))
         .shadow(radius: 200)
         .padding([.leading,.horizontal],20)
+        .transition(AnyTransition.opacity.animation(.easeInOut))
+        
     }
 }
 struct inputField:View{
@@ -120,5 +128,11 @@ struct inputField:View{
                     .padding(.horizontal,7)
             }
         }
+    }
+}
+
+struct popup: PreviewProvider {
+    static var previews: some View {
+        ContentView(num: 2)
     }
 }

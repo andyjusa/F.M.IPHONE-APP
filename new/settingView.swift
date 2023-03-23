@@ -30,13 +30,20 @@ struct setting:View{
                                     .foregroundColor(baseColor)
                             }
                             .padding([.top,.bottom,.leading],10)
-                            Text("\n\n로그인이 필요 합니다.\n\n")
+                            Text("\n\(net.name)\n")
+                                .font(.title)
                                 .fontWeight(.bold)
                                 .padding(.leading,13)
+                                .onChange(of: net.name)
+                            {(new) in
+                                self.popupEnable = false
+                            }
                             Spacer()
                         }.onTapGesture()
                         {
-                            popupEnable.toggle()
+                            if(net.isConnected){
+                                popupEnable.toggle()
+                            }
                         }
                     }.padding(.top,20)
                     ZStack{
@@ -72,6 +79,9 @@ struct setting:View{
                                         {
                                             Text($0)
                                         }
+                                    }.onChange(of: selectedA)
+                                    { i in
+                                        UserDefaults.standard.set(selectedA, forKey: "A")
                                     }
                                 }
                             }.padding(.horizontal)
@@ -92,6 +102,9 @@ struct setting:View{
                                     {
                                         Text($0)
                                     }
+                                }.onChange(of: selectedB)
+                                { i in
+                                    UserDefaults.standard.set(selectedB, forKey: "A")
                                 }
                             }.padding(.horizontal)
                         }
@@ -111,6 +124,9 @@ struct setting:View{
                                     {
                                         Text($0)
                                     }
+                                }.onChange(of: selectedC)
+                                { i in
+                                    UserDefaults.standard.set(selectedC, forKey: "A")
                                 }
                             }.padding(.horizontal)
                         }

@@ -9,12 +9,13 @@ import SwiftUI
 import SocketIO
 import Network
 
+
 struct ContentView: View {
     @State var num:Int
     @State var BaseColor : Color = .blue
-    @State var selectedA:String = "나"
-    @State var selectedB:String = "나"
-    @State var selectedC:String = "나"
+    @State var selectedA:String = (UserDefaults.standard.string(forKey: "A") ?? "나")
+    @State var selectedB:String = (UserDefaults.standard.string(forKey: "B") ?? "나")
+    @State var selectedC:String = (UserDefaults.standard.string(forKey: "C") ?? "나")
     @StateObject var net = netWork()
     var body: some View {
         VStack{
@@ -29,6 +30,9 @@ struct ContentView: View {
                     timeTable( basecolor: $BaseColor,selectedA: $selectedA,selectedB: $selectedB,selectedC: $selectedC,net: net).tabItem {
                         Label("시간표", systemImage: "tablecells")
                     }.tag(1)
+                        .onTapGesture {
+                            net.getSchedule(i: 3)
+                        }
                     setting(baseColor: $BaseColor,selectedA: $selectedA,selectedB: $selectedB,selectedC: $selectedC,net:net ).tabItem {
                         Label("설정",systemImage: "gearshape")
                     }.tag(2)
