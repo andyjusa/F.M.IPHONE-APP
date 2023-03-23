@@ -1,10 +1,10 @@
 import Foundation
 import SwiftUI
 struct timeTable: View{
-    var basecolor:Binding<Color>
-    var selectedA:Binding<String>
-    var selectedB:Binding<String>
-    var selectedC:Binding<String>
+    @Binding var basecolor:UIColor
+    @Binding var selectedA:String
+    @Binding var selectedB:String
+    @Binding var selectedC:String
     @StateObject var net:netWork
 
      let baseOfTimeTable:[String] = [
@@ -26,15 +26,18 @@ struct timeTable: View{
                         Rectangle()
                             .frame(height: 40)
                             .cornerRadius(5)
-                            .foregroundColor(basecolor.wrappedValue)
+                            .foregroundColor(Color(basecolor))
                         Group{
                             switch Int(net.value[i]){
                             case 120:
-                                Text(selectedA.wrappedValue)
+                                Text(selectedA)
+                                    .font((selectedA.count>3) ? Font.system(size: 11, weight:.bold) : .body)
                             case 121:
-                                Text(selectedB.wrappedValue)
+                                Text(selectedB)
+                                    .font((selectedB.count>3) ? Font.system(size: 11, weight:.bold) : .body)
                             case 122:
-                                Text(selectedC.wrappedValue)
+                                Text(selectedC)
+                                    .font((selectedC.count>3) ? Font.system(size: 11, weight:.bold) : .body)
                             default:
                                 Text("\(baseOfTimeTable[Int(net.value[i])])")
                             }

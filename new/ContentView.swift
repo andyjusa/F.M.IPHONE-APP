@@ -12,7 +12,7 @@ import Network
 
 struct ContentView: View {
     @State var num:Int
-    @State var BaseColor : Color = .blue
+    @State var BaseColor : UIColor = UIColor(UserDefaults.standard.string(forKey: "defaultColor") ?? "#000000FF")
     @State var selectedA:String = (UserDefaults.standard.string(forKey: "A") ?? "나")
     @State var selectedB:String = (UserDefaults.standard.string(forKey: "B") ?? "나")
     @State var selectedC:String = (UserDefaults.standard.string(forKey: "C") ?? "나")
@@ -22,6 +22,12 @@ struct ContentView: View {
             //TODO: USER DATA SAVE && LOAD
             Text((net.isConnected) ? "Online" : "Offline")
                 .foregroundColor(.red)
+                .onChange(of: net.isConnected)
+            {i in
+                if(i){
+                    net.getSchedule(i: net.id/100)
+                }
+            }
             TabView(selection: $num) {
                 Group{
                     noticeView(baseColor: $BaseColor).tabItem{
@@ -40,7 +46,7 @@ struct ContentView: View {
                 .background(Color(.systemGray6))
                 .padding(.bottom)
                 
-            }.accentColor(BaseColor)
+            }.accentColor(Color(BaseColor))
         }.background(Color(.systemGray6))
     }
 }

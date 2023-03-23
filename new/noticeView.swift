@@ -8,7 +8,7 @@ struct noticeView:View{
     @State var listOfNotice:[noticeType] = [noticeType(title:"수학 숙제",detail:"수학 숙제 13~ 15쪽 까지")]
     @State var a:Int = 0
     @State var isPressed = false
-    @Binding var baseColor:Color
+    @Binding var baseColor:UIColor
     var body: some View
     {
         ZStack{

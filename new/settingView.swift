@@ -1,17 +1,18 @@
 import Foundation
 import SwiftUI
-
+import UIColorHexSwift
 struct setting:View{
     let screenSize: CGRect = UIScreen.main.bounds
-    @Binding var baseColor:Color
+    @Binding var baseColor:UIColor
     @Binding var selectedA:String
     @Binding var selectedB:String
     @Binding var selectedC:String
     @StateObject var net:netWork
     @State var popupEnable:Bool = false
-    let AList = ["가","나","다"]
-    let BList = ["가","나","다"]
-    let CList = ["가","나","다"]
+    @State var color:Color = Color(UIColor(UserDefaults.standard.string(forKey: "defaultColor") ?? "#000000"))
+    let AList = ["","프로그래밍","인공지능","생윤","정법","세지","경제","물리","화학","생명","지구"]
+    let BList = ["","프로그래밍","인공지능","생윤","정법","세지","경제","물리","화학","생명","지구"]
+    let CList = ["","프로그래밍","인공지능","생윤","정법","세지","경제","물리","화학","생명","지구"]
     var body: some View{
         ZStack{
             VStack{
@@ -27,7 +28,7 @@ struct setting:View{
                                     .aspectRatio(contentMode: .fit)
                                     .fixedSize(horizontal: true, vertical: false)
                                     .clipShape(Circle())
-                                    .foregroundColor(baseColor)
+                                    .foregroundColor(Color(baseColor))
                             }
                             .padding([.top,.bottom,.leading],10)
                             Text("\n\(net.name)\n")
@@ -58,7 +59,13 @@ struct setting:View{
                                 
                                 Spacer()
                                 ZStack{
-                                    ColorPicker("", selection: $baseColor)
+                                    
+                                    ColorPicker("", selection: $color)
+                                        .onChange(of: color)
+                                    {i in
+                                        UserDefaults.standard.set(UIColor(color).hexString(true), forKey: "defaultColor")
+                                        baseColor = UIColor(color)
+                                    }
                                 }
                             }.padding(.horizontal)
                         }
@@ -104,7 +111,7 @@ struct setting:View{
                                     }
                                 }.onChange(of: selectedB)
                                 { i in
-                                    UserDefaults.standard.set(selectedB, forKey: "A")
+                                    UserDefaults.standard.set(selectedB, forKey: "B")
                                 }
                             }.padding(.horizontal)
                         }
@@ -126,7 +133,7 @@ struct setting:View{
                                     }
                                 }.onChange(of: selectedC)
                                 { i in
-                                    UserDefaults.standard.set(selectedC, forKey: "A")
+                                    UserDefaults.standard.set(selectedC, forKey: "C")
                                 }
                             }.padding(.horizontal)
                         }

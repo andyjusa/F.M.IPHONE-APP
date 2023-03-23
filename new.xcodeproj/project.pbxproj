@@ -20,6 +20,10 @@
 		5C9DD09929C6E9FF00DCE3A3 /* netWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9DD09429C6E9FF00DCE3A3 /* netWork.swift */; };
 		5C9DD09A29C6E9FF00DCE3A3 /* settingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9DD09529C6E9FF00DCE3A3 /* settingView.swift */; };
 		5C9DD09D29C6EA2400DCE3A3 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 5C9DD09C29C6EA2400DCE3A3 /* SocketIO */; };
+		5CE6F9BD29CC86EA00F16EA2 /* UIColorHexSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5CE6F9BC29CC86EA00F16EA2 /* UIColorHexSwift */; };
+		5CE6F9BF29CC927400F16EA2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CE6F9BE29CC927400F16EA2 /* GoogleService-Info.plist */; };
+		5CE6F9C229CC933300F16EA2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5CE6F9C129CC933300F16EA2 /* FirebaseAnalytics */; };
+		5CE6F9C429CC933300F16EA2 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5CE6F9C329CC933300F16EA2 /* FirebaseAnalyticsSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,7 @@
 		5C9DD09329C6E9FF00DCE3A3 /* popupUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = popupUI.swift; sourceTree = "<group>"; };
 		5C9DD09429C6E9FF00DCE3A3 /* netWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = netWork.swift; sourceTree = "<group>"; };
 		5C9DD09529C6E9FF00DCE3A3 /* settingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingView.swift; sourceTree = "<group>"; };
+		5CE6F9BE29CC927400F16EA2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +67,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CE6F9C429CC933300F16EA2 /* FirebaseAnalyticsSwift in Frameworks */,
+				5CE6F9BD29CC86EA00F16EA2 /* UIColorHexSwift in Frameworks */,
 				5C9DD09D29C6EA2400DCE3A3 /* SocketIO in Frameworks */,
+				5CE6F9C229CC933300F16EA2 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +114,7 @@
 		5C9DD06629C6E98E00DCE3A3 /* new */ = {
 			isa = PBXGroup;
 			children = (
+				5CE6F9BE29CC927400F16EA2 /* GoogleService-Info.plist */,
 				5C9DD06729C6E98E00DCE3A3 /* newApp.swift */,
 				5C9DD06929C6E98E00DCE3A3 /* ContentView.swift */,
 				5C9DD09429C6E9FF00DCE3A3 /* netWork.swift */,
@@ -162,6 +171,9 @@
 			name = new;
 			packageProductDependencies = (
 				5C9DD09C29C6EA2400DCE3A3 /* SocketIO */,
+				5CE6F9BC29CC86EA00F16EA2 /* UIColorHexSwift */,
+				5CE6F9C129CC933300F16EA2 /* FirebaseAnalytics */,
+				5CE6F9C329CC933300F16EA2 /* FirebaseAnalyticsSwift */,
 			);
 			productName = new;
 			productReference = 5C9DD06429C6E98E00DCE3A3 /* new.app */;
@@ -237,6 +249,8 @@
 			mainGroup = 5C9DD05B29C6E98E00DCE3A3;
 			packageReferences = (
 				5C9DD09B29C6EA2400DCE3A3 /* XCRemoteSwiftPackageReference "socket" */,
+				5CE6F9BB29CC86EA00F16EA2 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */,
+				5CE6F9C029CC933300F16EA2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 5C9DD06529C6E98E00DCE3A3 /* Products */;
 			projectDirPath = "";
@@ -256,6 +270,7 @@
 			files = (
 				5C9DD06F29C6E98E00DCE3A3 /* Preview Assets.xcassets in Resources */,
 				5C9DD06C29C6E98E00DCE3A3 /* Assets.xcassets in Resources */,
+				5CE6F9BF29CC927400F16EA2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +636,22 @@
 				minimumVersion = 16.0.1;
 			};
 		};
+		5CE6F9BB29CC86EA00F16EA2 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yeahdongcn/UIColor-Hex-Swift";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.1.9;
+			};
+		};
+		5CE6F9C029CC933300F16EA2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 9.6.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -628,6 +659,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5C9DD09B29C6EA2400DCE3A3 /* XCRemoteSwiftPackageReference "socket" */;
 			productName = SocketIO;
+		};
+		5CE6F9BC29CC86EA00F16EA2 /* UIColorHexSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CE6F9BB29CC86EA00F16EA2 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */;
+			productName = UIColorHexSwift;
+		};
+		5CE6F9C129CC933300F16EA2 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CE6F9C029CC933300F16EA2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		5CE6F9C329CC933300F16EA2 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CE6F9C029CC933300F16EA2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

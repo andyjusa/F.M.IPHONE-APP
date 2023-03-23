@@ -4,16 +4,16 @@ import Starscream
 import Network
 
 class netWork:ObservableObject{
-    @Published var id:Int = 2300
-    @Published var name:String = "로그인이 필요함"
-    @Published var value:Data = Data([0,1,2,3,4,5,
-                                      6,0,0,0,0,0,
-                                      7,0,0,0,0,0,
-                                      8,0,0,0,0,0,
-                                      9,0,0,0,0,0,
-                                      10,0,0,0,0,0,
-                                      11,0,0,0,0,0,
-                                      12,0,0,0,0,0])
+    @Published var id:Int = UserDefaults.standard.integer(forKey: "id") 
+    @Published var name:String = UserDefaults.standard.string(forKey: "name") ?? "로그인이 필요함"
+    @Published var value:Data = UserDefaults.standard.data(forKey: "schedule") ?? Data([0,1,2,3,4,5,
+                                                                                      6,0,0,0,0,0,
+                                                                                      7,0,0,0,0,0,
+                                                                                      8,0,0,0,0,0,
+                                                                                      9,0,0,0,0,0,
+                                                                                      10,0,0,0,0,0,
+                                                                                      11,0,0,0,0,0,
+                                                                                      12,0,0,0,0,0])
     let manager = SocketManager(socketURL: URL(string: "http://localhost:8080")!, config: [.log(true), .compress])
     var socket:SocketIOClient!
     
@@ -39,6 +39,7 @@ class netWork:ObservableObject{
         }
         socket.on("schedule")
         {data,sid in
+            UserDefaults.standard.set(((data.first as? Data)!), forKey: "schedule")
             self.value = ((data.first as? Data)!)
         }
         socket.on("logined")
@@ -46,6 +47,8 @@ class netWork:ObservableObject{
             if data[0] as! String == "suceed"{
                 self.name = data[2] as! String
                 self.id = data[1] as! Int
+                UserDefaults.standard.set(self.name, forKey: "name")
+                UserDefaults.standard.set(self.id, forKey: "id")
                 self.getSchedule(i: self.id/100)
             }
         }
@@ -57,7 +60,6 @@ class netWork:ObservableObject{
     }
     func connect() {
         socket.connect()
-        
     }
     func getSchedule(i:Int) {
         socket.emit("getSchedule", i)
