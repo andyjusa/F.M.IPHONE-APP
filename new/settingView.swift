@@ -28,7 +28,7 @@ struct setting:View{
                                     .aspectRatio(contentMode: .fit)
                                     .fixedSize(horizontal: true, vertical: false)
                                     .clipShape(Circle())
-                                    .foregroundColor(Color(baseColor))
+                                    .foregroundColor(Color.accentColor)
                             }
                             .padding([.top,.bottom,.leading],10)
                             Text("\n\(net.name)\n")
@@ -145,7 +145,7 @@ struct setting:View{
             VStack{
                 Spacer()
                 if(popupEnable){
-                    popupUI(isEnable: $popupEnable,net:net)
+                    popupUI(isEnable: $popupEnable, net: net)
                 }
             }.aspectRatio(CGSize(width: 10, height: 14.6),contentMode: .fit)
         }

@@ -24,6 +24,7 @@
 		5CE6F9BF29CC927400F16EA2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CE6F9BE29CC927400F16EA2 /* GoogleService-Info.plist */; };
 		5CE6F9C229CC933300F16EA2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5CE6F9C129CC933300F16EA2 /* FirebaseAnalytics */; };
 		5CE6F9C429CC933300F16EA2 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5CE6F9C329CC933300F16EA2 /* FirebaseAnalyticsSwift */; };
+		5CE6F9C629CC9E5300F16EA2 /* mealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE6F9C529CC9E5300F16EA2 /* mealView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		5C9DD09429C6E9FF00DCE3A3 /* netWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = netWork.swift; sourceTree = "<group>"; };
 		5C9DD09529C6E9FF00DCE3A3 /* settingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingView.swift; sourceTree = "<group>"; };
 		5CE6F9BE29CC927400F16EA2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5CE6F9C529CC9E5300F16EA2 /* mealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mealView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				5C9DD09129C6E9FF00DCE3A3 /* tableView.swift */,
 				5C9DD06B29C6E98E00DCE3A3 /* Assets.xcassets */,
 				5C9DD06D29C6E98E00DCE3A3 /* Preview Content */,
+				5CE6F9C529CC9E5300F16EA2 /* mealView.swift */,
 			);
 			path = new;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				5C9DD09829C6E9FF00DCE3A3 /* popupUI.swift in Sources */,
 				5C9DD09729C6E9FF00DCE3A3 /* noticeView.swift in Sources */,
 				5C9DD06A29C6E98E00DCE3A3 /* ContentView.swift in Sources */,
+				5CE6F9C629CC9E5300F16EA2 /* mealView.swift in Sources */,
 				5C9DD06829C6E98E00DCE3A3 /* newApp.swift in Sources */,
 				5C9DD09929C6E9FF00DCE3A3 /* netWork.swift in Sources */,
 				5C9DD09A29C6E9FF00DCE3A3 /* settingView.swift in Sources */,

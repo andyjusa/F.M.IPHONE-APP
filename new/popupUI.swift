@@ -11,7 +11,7 @@ struct popupUI:View
     @State var Code:String = ""
     @State var PSW:String = ""
     @State var PSWC:String = ""
-    @State var Error:String = ""
+    @State var checkAuto = false
     @StateObject var net:netWork
     
     var body: some View
@@ -28,11 +28,6 @@ struct popupUI:View
                       .padding()
                       .cornerRadius(15)
                       .padding()
-                //FIXME: 알림을 안드로이드의 토스트 형식으로 전환
-                Text("\(Error)")
-                    .font(.subheadline)
-                    .fontWeight(.light)
-                    .foregroundColor(.red)
                 //FIXME: TEXT INPUT의 위치 조정
                 Group{
                     if(isLogin){
@@ -44,12 +39,20 @@ struct popupUI:View
                             SecureField(" 비밀번호",text: $PSW)
                                 .padding(.horizontal,5)
                         }
+                        HStack{
+                            Spacer()
+                            Label("자동 로그인",systemImage:(checkAuto) ? "square" : "checkmark.square.fill")
+                                .foregroundColor(Color.accentColor)
+                                .onTapGesture {
+                                    checkAuto.toggle()
+                                }
+                        }
                         Text("\n\n\n\n\n")
+                        
                         ZStack{
-                            Rectangle().foregroundColor(.blue)
+                            Rectangle().foregroundColor(Color.accentColor)
                                 .cornerRadius(10)
                                 .aspectRatio(CGSize(width: 9, height: 1),contentMode: .fit)
-                            
                             Text("\n  로그인  \n").foregroundColor(.white)
                                 .fontWeight(.bold)
                         }
@@ -63,11 +66,12 @@ struct popupUI:View
                                 .autocapitalization(.none)
                             Button("인증")
                             {
-                                let emailTest = NSPredicate(format: "SELF MATCHES %@", "23ms+[0-9]{4}+@h.jne.go.kr")
+                                let emailTest = NSPredicate(format: "SELF MATCHES %@", "((23ms+[0-9]{4})|(mstr+[0-9]{2}))@h.jne.go.kr")
                                 if(emailTest.evaluate(with: Email))
                                 {
-                                    Error = "인증 번호 보냄"
                                     net.email(s: Email)
+                                }else{
+                                    net.setAlram(message: "포맷이 일치하지 않음")
                                 }
                             }
                         }
@@ -87,7 +91,7 @@ struct popupUI:View
                                 .padding(.horizontal,5)
                         }
                         ZStack{
-                            Rectangle().foregroundColor(.blue)
+                            Rectangle().foregroundColor(Color.accentColor)
                                 .cornerRadius(10)
                                 .aspectRatio(CGSize(width: 9, height: 1),contentMode: .fit)
                             Text("\n  회원가입  \n").foregroundColor(.white)
